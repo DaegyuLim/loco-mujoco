@@ -70,6 +70,7 @@ def experiment(config: DictConfig):
             validation_metrics = jax.tree.map(lambda x: jnp.mean(jnp.atleast_2d(x), axis=0), validation_metrics)
 
             for i in range(len(training_metrics.mean_episode_return)):
+                print(f'iteration: {i}')
                 run.log({"Mean Episode Return": training_metrics.mean_episode_return[i],
                          "Mean Episode Length": training_metrics.mean_episode_length[i]},
                         step=int(training_metrics.max_timestep[i]))

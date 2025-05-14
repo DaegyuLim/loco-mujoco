@@ -19,6 +19,9 @@ ckpts/
 outputs/
 multirun/
 home/
+amass/
+amass_conv/
+smpl/
 loco_mujoco/smpl/conf_paths.yaml
 data/
 *.vscode
