@@ -12,7 +12,7 @@ def experiment(seed=0):
                                 amass_dataset_conf=AMASSDatasetConf(["ACCAD/ACCAD/Female1General_c3d/A12 - crawl backwards_poses.npz"]),
                                 n_substeps=20)
 
-    env.play_trajectory(n_episodes=3, n_steps_per_episode=500, render=True)
+    env.play_trajectory(n_episodes=3, n_steps_per_episode=500, render=False)
 
 
 if __name__ == '__main__':

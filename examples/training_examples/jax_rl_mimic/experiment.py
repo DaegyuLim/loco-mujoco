@@ -15,12 +15,12 @@ from omegaconf import DictConfig, OmegaConf
 import traceback
 
 
-@hydra.main(version_base=None, config_path="./", config_name="conf")
+@hydra.main(version_base=None, config_path="./", config_name="igrisA_conf")
 def experiment(config: DictConfig):
     try:
 
-        os.environ['XLA_FLAGS'] = (
-            '--xla_gpu_triton_gemm_any=True ')
+        # os.environ['XLA_FLAGS'] = (
+        #     '--xla_gpu_triton_gemm_any=True ')
 
         # Accessing the current sweep number
         result_dir = hydra.core.hydra_config.HydraConfig.get().runtime.output_dir
@@ -29,35 +29,37 @@ def experiment(config: DictConfig):
         wandb.login()
         config_dict = OmegaConf.to_container(config, resolve=True, throw_on_missing=True)
         run = wandb.init(project=config.wandb.project, config=config_dict)
-
+        print('[DEBUG] wandb setup done')
         # get task factory
         factory = TaskFactory.get_factory_cls(config.experiment.task_factory.name)
-
+        print('[DEBUG] get task factory done')
         # create env
         env = factory.make(**config.experiment.env_params, **config.experiment.task_factory.params)
-
+        print('[DEBUG] create env done')
         # get initial agent configuration
         agent_conf = PPOJax.init_agent_conf(env, config)
-
+        print('[DEBUG] agent initialization done')
         # setup metric handler (optional)
         mh = MetricsHandler(config, env) if config.experiment.validation.active else None
-
+        print('[DEBUG] metrix handler setup done')
         # build training function
         train_fn = PPOJax.build_train_fn(env, agent_conf, mh=mh)
-
+        print('[DEBUG] training function build done')
         # jit and vmap training function
         train_fn = jax.jit(jax.vmap(train_fn)) if config.experiment.n_seeds > 1 else jax.jit(train_fn)
-
+        print('[DEBUG] jit & vmap training function done')
         # get rng keys and run training
         rngs = [jax.random.PRNGKey(i) for i in range(config.experiment.n_seeds+1)]  # create rngs from seed
         rng, _rng = rngs[0], jnp.squeeze(jnp.vstack(rngs[1:]))
         out = train_fn(_rng)
-
+        print('[DEBUG] training done')
         # save agent state
         agent_state = out["agent_state"]
         save_path = PPOJax.save_agent(result_dir, agent_conf, agent_state)
         run.config.update({"agent_save_path": save_path})
 
+        print('[DEBUG] save agent config')
+        
         import time
         t_start = time.time()
         # get the metrics and log them
@@ -70,7 +72,6 @@ def experiment(config: DictConfig):
             validation_metrics = jax.tree.map(lambda x: jnp.mean(jnp.atleast_2d(x), axis=0), validation_metrics)
 
             for i in range(len(training_metrics.mean_episode_return)):
-                print(f'iteration: {i}')
                 run.log({"Mean Episode Return": training_metrics.mean_episode_return[i],
                          "Mean Episode Length": training_metrics.mean_episode_length[i]},
                         step=int(training_metrics.max_timestep[i]))
@@ -107,6 +108,7 @@ def experiment(config: DictConfig):
         PPOJax.play_policy(env, agent_conf, agent_state, deterministic=True, n_steps=200, n_envs=20, record=True,
                            train_state_seed=0)
         video_file = env.video_file_path
+        print(f'video_file: {video_file}')
         run.log({"Agent Video": wandb.Video(video_file)})
 
         wandb.finish()

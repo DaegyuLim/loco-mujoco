@@ -11,7 +11,7 @@ dependencies = [
     "hydra-core",
     "jax",
     "flax",
-    "orbax",
+    "orbax-checkpoint",
     "distrax",
     "metrx",
     "gymnasium",

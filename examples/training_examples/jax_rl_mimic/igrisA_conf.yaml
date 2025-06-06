@@ -1,0 +1,175 @@
+defaults:
+  - override hydra/job_logging: default
+  - override hydra/launcher: basic
+
+#hydra:
+#  mode: MULTIRUN
+#  job_logging: {}
+#  hydra_logging: {}
+#  sweeper:
+#    params:
+#      experiment.learnable_std: true, false
+#      experiment.init_std: 0.1, 0.2
+#      experiment.num_steps: 10, 20
+#      experiment.update_epochs: 4
+#      experiment.clip_eps: 0.2, 0.05
+#      # env_params
+#      experiment.env_params.env_name: MjxUnitreeH1.walk, MjxUnitreeH1.run
+
+wandb:
+  project: "deepmimic"
+
+experiment:
+  task_factory:
+    name: ImitationFactory
+    params:
+      lafan1_dataset_conf:
+        dataset_name:
+          - walk1_subject5
+      
+  env_params:
+    env_name: MjxRobrosIgrisA
+    headless: True
+    disable_arms: false
+    horizon: 1000
+    goal_type: GoalTrajMimic
+    goal_params:
+      visualize_goal: true
+    control_type: ${control_config.torque_control.control_type}
+    control_params: ${control_config.torque_control.control_params}
+    reward_type: MimicReward
+    reward_params:
+      qpos_w_sum: 0.4
+      qvel_w_sum: 0.2
+      rpos_w_sum: 0.5
+      rquat_w_sum: 0.3
+      rvel_w_sum: 0.1
+      sites_for_mimic:
+        - upper_body_mimic
+        - left_hand_mimic
+        - left_foot_mimic
+        - right_hand_mimic
+        - right_foot_mimic
+  hidden_layers: [512, 256]
+  lr: 1e-4
+  num_envs: 2048
+  num_steps: 200
+  total_timesteps: 300e6
+  update_epochs: 4
+  proportion_env_reward: 0.0
+  num_minibatches: 32
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_eps: 0.2
+  init_std: 0.2
+  learnable_std: false
+  ent_coef: 0.0
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  activation: tanh
+  anneal_lr: false
+  weight_decay: 0.0
+  normalize_env: true
+  debug: false
+  n_seeds: 1  # will automatically take seeds from 1 to n_seeds
+  vmap_across_seeds: true
+  validation:
+    active: true
+    num_steps: 100
+    num_envs: 100
+    num: 10 # set to 0 to disable validation
+    # if none of the following is set, only the mean reward and episode length is logged
+    quantities: # quantities to be used for the distance measures below
+      - JointPosition
+      - JointVelocity
+      - RelSitePosition
+      - RelSiteVelocity
+      - RelSiteOrientation
+    measures:
+      - EuclideanDistance
+      - DynamicTimeWarping
+      - DiscreteFrechetDistance
+    rel_site_names:
+      - upper_body_mimic
+      - left_hand_mimic
+      - left_foot_mimic
+      - right_hand_mimic
+      - right_foot_mimic
+    joints_to_ignore:
+      - pelvis_tx
+      - pelvis_tz
+      - pelvis_ty
+      - pelvis_tilt
+      - pelvis_list
+      - pelvis_rotation
+
+# Define control subconfigs
+control_config:
+  position_control:
+    control_type: PDControl
+    control_params:
+      p_gain:
+        - 200 
+        - 100 
+        - 200 
+        - 150 
+        - 50  
+        - 50  
+        - 200 
+        - 100 
+        - 200 
+        - 150 
+        - 50  
+        - 50  
+        - 100 
+        - 100  
+        - 100 
+        - 150 
+        - 120 
+        - 50  
+        - 50  
+        - 12
+        - 12
+        - 12
+        - 150 
+        - 120 
+        - 50  
+        - 50  
+        - 12
+        - 12
+        - 12
+
+      d_gain:
+        - 30 
+        - 20 
+        - 30 
+        - 24
+        - 10  
+        - 10  
+        - 30 
+        - 20 
+        - 30 
+        - 24
+        - 10  
+        - 10  
+        - 20 
+        - 20  
+        - 20 
+        - 10 
+        - 7 
+        - 1.5  
+        - 5  
+        - 1
+        - 1
+        - 1
+        - 10 
+        - 7 
+        - 1.5  
+        - 5  
+        - 1
+        - 1
+        - 1
+
+  torque_control:
+    control_type: DefaultControl
+    control_params:

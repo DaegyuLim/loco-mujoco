@@ -1,0 +1,10 @@
+robot_pose_modifier:
+  - Joint_1_1_2_Shoulder_Roll_Left_Arm: "0.13"
+  - Joint_1_2_2_Shoulder_Roll_Right_Arm: "-0.13"
+
+
+optimization_params:
+  z_offset_feet: -0.05
+
+env_params:
+  disable_arms: false

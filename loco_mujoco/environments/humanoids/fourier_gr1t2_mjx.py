@@ -31,7 +31,6 @@ class MjxFourierGR1T2(FourierGR1T2):
             Modified Mujoco specification.
 
         """
-
         # --- 1. Make all geoms have contype and conaffinity of 0 ---
         for g in spec.geoms:
             g.contype = 0

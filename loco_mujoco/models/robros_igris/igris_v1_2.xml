@@ -1,0 +1,391 @@
+<mujoco model="igris_v_1_2">
+  <compiler angle="radian" meshdir="meshes/igris_v1_2_parallel/" balanceinertia="false" autolimits="true"/>
+  <include file="../common/scene.xml"/>
+  <include file="../common/mimic_sites.xml"/>
+
+  <size njmax="8000" nconmax="4000" />
+  <option timestep='0.001' iterations="50" tolerance="1e-5" solver="Newton" jacobian="dense" cone="elliptic" noslip_iterations="30" noslip_tolerance="1e-5"/>
+  
+  <default>
+    <motor ctrllimited="true" />
+
+    <default class="visual">
+      <geom group="1" type="mesh" contype="0" conaffinity="0" density="0" rgba="1 1 1 1"/>
+    </default>
+
+    <default class="collision">
+      <geom group="2" rgba="1.0 0.0 0.0 0.5"/>
+    </default>
+
+    <default class="TBM2G_11526_SHF_32">
+        <joint damping="8" frictionloss="6" limited="true" armature="0.341155"/>
+        <motor ctrlrange="-449.5 449.5"/>
+    </default>  
+
+    <default class="TBM2G_09408_SHF_25">
+        <joint damping="7"  frictionloss="5" limited="true" armature="0.0827421"/>
+        <motor ctrlrange="-121.52 121.52" />
+    </default>  
+
+    <default class="TBM2G_07613_SHF_25">
+        <joint damping="7"  frictionloss="4" limited="true" armature="0.0553536"/>
+        <motor ctrlrange="-106.02 106.02" />
+    </default>  
+
+    <default class="TBM2G_07613_SHF_20">
+        <joint damping="6"  frictionloss="3" limited="true" armature="0.0553536"/>
+        <motor ctrlrange="-106.02 106.02" />
+    </default>  
+
+    <default class="TBM2G_06013_SHF_20">
+        <joint damping="6"  frictionloss="2" limited="true" armature="0.0141267"/>
+        <motor ctrlrange="-51.77 51.77" />
+    </default>  
+
+    <default class="TBM2G_06013_SHF_17">
+        <joint damping="5"  frictionloss="1" limited="true" armature="0.0141267"/>
+        <motor ctrlrange="-51.77 51.77"/>
+    </default>  
+
+    <default class="TBM2G_05008_SHF_14">
+        <joint damping="4"  frictionloss="0.5" limited="true" armature="0.0075919"/>
+        <motor ctrlrange="-22.32 22.32"/>
+    </default>
+
+    <default class="TBM2G_05008_CSF_11">
+        <joint damping="3"  frictionloss="0.3" limited="true" armature="0.0075919"/>
+        <motor ctrlrange="-22.32 22.32"/>
+    </default>
+
+    <default class="Passive">
+        <joint damping="0.01"  frictionloss="0" limited="false" armature="0"/>
+    </default>
+  </default>
+
+  <asset>
+    <mesh name="2_0_0_Pelvis_Leg" file="2_0_0_Pelvis_Leg.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="3_1_Waist_parallel" file="3_1_Waist_parallel_v2.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="3_1_1_Bracket_Left_Waist" file="3_1_1_Bracket_Left_Waist.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="3_1_2_Rod_Left_Waist" file="3_1_2_Rod_Left_Waist.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="3_1_3_Bracket_Right_Waist" file="3_1_3_Bracket_Right_Waist.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="3_1_4_Rod_Right_Waist" file="3_1_4_Rod_Right_Waist.stl" scale="0.001 0.001 0.001"/>
+
+    <mesh name="3_2_Link_cross_Torso_Body" file="3_2_Link_cross_Torso_Body.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="3_3_Torso" file="3_3_Torso.stl" scale="0.001 0.001 0.001"/>
+  
+    <mesh name="1_1_1_Shoulder_Pitch_Left_Arm" file="1_1_1_Shoulder_Pitch_Left_Arm.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="1_1_2_Shoulder_Roll_Left_Arm" file="1_1_2_Shoulder_Roll_Left_Arm.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="1_1_3_Shoulder_Yaw_Left_Arm" file="1_1_3_Shoulder_Yaw_Left_Arm.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="1_1_4_Elbow_Left_Arm" file="1_1_4_Elbow_Left_Arm.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="1_1_5_Wrist_Yaw_Left_Arm" file="1_1_5_Wrist_Yaw_Left_Arm.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="1_1_6_Wrist_Pitch_Left_Arm" file="1_1_6_Wrist_Pitch_Left_Arm.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="1_1_7_Wrist_Roll_Left_Arm" file="1_1_7_Wrist_Roll_Left_Arm.stl" scale="0.001 0.001 0.001"/>
+  
+    <mesh name="1_2_1_Shoulder_Pitch_Right_Arm" file="1_2_1_Shoulder_Pitch_Right_Arm.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="1_2_2_Shoulder_Roll_Right_Arm" file="1_2_2_Shoulder_Roll_Right_Arm.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="1_2_3_Shoulder_Yaw_Right_Arm" file="1_2_3_Shoulder_Yaw_Right_Arm.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="1_2_4_Elbow_Right_Arm" file="1_2_4_Elbow_Right_Arm.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="1_2_5_Wrist_Yaw_Right_Arm" file="1_2_5_Wrist_Yaw_Right_Arm.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="1_2_6_Wrist_Pitch_Right_Arm" file="1_2_6_Wrist_Pitch_Right_Arm.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="1_2_7_Wrist_Roll_Right_Arm" file="1_2_7_Wrist_Roll_Right_Arm.stl" scale="0.001 0.001 0.001"/>
+  
+    <mesh name="2_1_1_Hip_Roll_Left_Leg" file="2_1_1_Hip_Roll_Left_Leg.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="2_1_2_Hip_Yaw_Left_Leg" file="2_1_2_Hip_Yaw_Left_Leg.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="2_1_3_Thigh_Left_Leg" file="2_1_3_Thigh_Left_Leg.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="2_1_4_Shin_Left_Leg" file="2_1_4_Shin_Left_Leg_v2.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="2_1_4_1_Bracket_Out_Left_Ankle" file="2_1_4_1_Bracket_Out_Left_Ankle.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="2_1_4_2_Bracket_In_Left_Ankle" file="2_1_4_2_Bracket_In_Left_Ankle.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="2_1_5_Shaft_Foot_Left_Leg" file="2_1_5_Shaft_Foot_Left_Leg.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="2_1_6_Foot_Left_Leg" file="2_1_6_Foot_Left_Leg_v2.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="2_1_6_1_Uni_Out_Left_Foot" file="2_1_6_1_Uni_Out_Left_Foot.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="2_1_6_2_Link_Long_Left_Foot" file="2_1_6_2_Link_Long_Left_Foot.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="2_1_6_3_Uni_In_Left_Foot" file="2_1_6_3_Uni_In_Left_Foot.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="2_1_6_4_Link_Short_Left_Foot" file="2_1_6_4_Link_Short_Left_Foot.stl" scale="0.001 0.001 0.001"/>
+
+    <mesh name="2_2_1_Hip_Roll_Right_Leg" file="2_2_1_Hip_Roll_Right_Leg.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="2_2_2_Hip_Yaw_Right_Leg" file="2_2_2_Hip_Yaw_Right_Leg.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="2_2_3_Thigh_Right_Leg" file="2_2_3_Thigh_Right_Leg.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="2_2_4_Shin_Right_Leg" file="2_2_4_Shin_Right_Leg_v2.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="2_2_4_1_Bracket_Out_Right_Ankle" file="2_2_4_1_Bracket_Out_Right_Ankle.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="2_2_4_2_Bracket_In_Right_Ankle" file="2_2_4_2_Bracket_In_Right_Ankle.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="2_2_5_Shaft_Foot_Right_Leg" file="2_2_5_Shaft_Foot_Right_Leg.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="2_2_6_Foot_Right_Leg" file="2_2_6_Foot_Right_Leg_v2.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="2_2_6_1_Uni_Out_Right_Foot" file="2_2_6_1_Uni_Out_Right_Foot.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="2_2_6_2_Link_Long_Right_Foot" file="2_2_6_2_Link_Long_Right_Foot.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="2_2_6_3_Uni_In_Right_Foot" file="2_2_6_3_Uni_In_Right_Foot.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="2_2_6_4_Link_Short_Right_Foot" file="2_2_6_4_Link_Short_Right_Foot.stl" scale="0.001 0.001 0.001"/>
+
+    <texture type="skybox" builtin="gradient" width="128" height="128" rgb1="1.0 1.0 1.0" rgb2="0.4 0.4 0.4"/>
+    <texture name="grid" type="2d" builtin="checker" width="512" height="512" rgb1="0.9 0.9 0.9" rgb2=".85 .85 .85"/>
+    <material name="grid" texture="grid" texrepeat="1 1" texuniform="true" reflectance=".2"/>
+  </asset>
+
+  <worldbody>
+    <!-- <geom name="floor" size="10 10 .05" type="plane" material="grid" condim="3"/>
+    <light directional="true" diffuse=".8 .8 .8" pos="0 0 10" dir="0.5 0.5 -5" />
+    <light directional="true" diffuse=".3 .3 .3" pos="10 0 0" dir="-10 0 0" /> -->
+
+    <body name="base_link" pos="0 0 1.5">
+      <site name = "base_link_site" pos="0 0 0" size="0.01"/>
+      <site name="pelvis_mimic" class="mimic"/>
+      <inertial pos="-0.18845 -0.00001 -0.05084" mass="17.287" fullinertia="0.2612 0.06098 0.2811 -0.00001 -0.00432 0.00001"/>
+      <joint name="root" type="free" limited="false" actuatorfrclimited="false"/>
+      <geom class="visual" type="mesh" rgba="0.0706 0.0706 0.0706 1.0" mesh="2_0_0_Pelvis_Leg"/>
+      <geom class="collision" type="cylinder" size="0.085 0.07" pos="-0.10 0.126 0.0" quat="0.7020326 -0.0845593 0.7020326 0.0845593"/>
+      <geom class="collision" type="cylinder" size="0.085 0.07" pos="-0.10 -0.126 0.0" quat="0.7020326 0.0845593 0.7020326 -0.0845593"/>
+      <geom class="collision" type="box" size="0.11 0.06 0.06" pos="-0.05 0.0 0.02"/>
+      <body name="2_1_1_Hip_Roll_Left_Leg" pos="-0.04791 0.14153 -0.00520" quat="0.992824 0 0 0.119582">
+        <inertial pos="0.07451 -0.00119 -0.00059" mass="3.265" fullinertia="0.00507 0.00646 0.00767 -0.00003 0.00008 -0.00007"/>
+        <joint name="Joint_2_1_1_Hip_Roll_Left_Leg" class="TBM2G_11526_SHF_32" pos="0 0 0" axis="1 0 0" range="-0.349066 1.5708"/>
+        <geom class="visual" type="mesh" rgba="0.23 0.25 0.23 1" mesh="2_1_1_Hip_Roll_Left_Leg"/>
+        <geom class="collision" type="cylinder" size="0.07 0.06" pos="0.0855 0.0 0.0" euler="0.0 0.0 0.0"/>
+        <body name="2_1_2_Hip_Yaw_Left_Leg" pos="0.0855 0.0 0.0" quat="0.992824 0 0 -0.119582">
+          <site name="left_hip_mimic" class="mimic"/>
+          <inertial pos="-0.02491 -0.03014 -0.13229" mass="6.765" fullinertia="0.01696 0.01963 0.0158 -0.00002 -0.00051 -0.00073"/>
+          <joint name="Joint_2_1_2_Hip_Yaw_Left_Leg" class="TBM2G_09408_SHF_25" pos="0 0 0" axis="0 0 1" range="-1.5708 1.5708"/>
+          <geom class="visual" type="mesh" rgba="0.23 0.25 0.23 1" mesh="2_1_2_Hip_Yaw_Left_Leg"/>
+          <geom class="collision" type="cylinder" size="0.085 0.07" pos="-0.025 -0.0245 -0.13638" euler="1.5708 0.0 0.0"/>
+          <body name="2_1_3_Thigh_Left_Leg" pos="-0.025 0.0 -0.13638">
+            <inertial pos="-0.00066 0.03383 -0.26689" mass="7.305" fullinertia="0.05244 0.0545 0.01786 -0.00017 0.00076 0.00751"/>
+            <joint name="Joint_2_1_3_Hip_Pitch_Left_Leg" class="TBM2G_11526_SHF_32" pos="0 0 0" axis="0 1 0" range="-2.0944 0.5236"/>
+            <geom class="visual" type="mesh" rgba="0.23 0.25 0.23 1" mesh="2_1_3_Thigh_Left_Leg"/>
+            <geom class="collision" type="cylinder" size="0.085 0.075" pos="0.0 -0.035 -0.29" euler="1.5708 0.0 0.0"/>
+            <geom class="collision" type="box" size="0.09 0.065 0.12" pos="0.0 -0.03 -0.1"/>
+            <body name="2_1_4_Shin_Left_Leg" pos="0.0 0.0 -0.29">
+              <site name="left_knee_mimic" class="mimic"/>
+              <inertial pos="0.00942 -0.01272 -0.21127" mass="5.128" fullinertia="0.06522 0.06602 0.00746 0.00023 0.00165 -0.00716"/>
+              <joint name="Joint_2_1_4_Knee_Left_Leg" class="TBM2G_11526_SHF_32" pos="0 0 0" axis="0 1 0" range="0 2.44346"/>
+              <geom class="visual" type="mesh" rgba="0.23 0.25 0.23 1" mesh="2_1_4_Shin_Left_Leg"/>
+              <geom class="collision" type="box" size="0.065 0.067 0.17" pos="0.005 -0.02 -0.26"/>
+              <!-- <geom class="collision" type="mesh" mesh="2_1_4_Shin_Left_Leg"/>  -->
+              <body name="2_1_5_Shaft_Foot_Left_Leg" pos="0.02 -0.02 -0.41">
+                <inertial pos="-0.01629 0 -0.00941" mass="0.133" fullinertia="0.00004 0.00012 0.00008 0 -0.00004 0"/>
+                <joint name="Joint_2_1_5_Ankle_Pitch_Left_Leg" class="TBM2G_06013_SHF_20" pos="0 0 0" axis="0 1 0" limited="true" range="-0.261799388 0.698131701"/>
+                <geom class="visual" type="mesh" rgba="0.23 0.25 0.23 1" mesh="2_1_5_Shaft_Foot_Left_Leg"/>
+                <body name="2_1_6_Foot_Left_Leg" pos="0 0 0">
+                  <site name="left_foot_mimic" class="mimic" pos="0.03 0.005 -0.05"/>
+                  <inertial pos="-0.01133 0.00174 -0.04348" mass="0.611" fullinertia="0.00040 0.00356 0.00380 -0.00007 0.00028 0.00001"/>
+                  <joint name="Joint_2_1_6_Ankle_Roll_Left_Leg" class="TBM2G_06013_SHF_20" pos="0 0 0" axis="0.8660254038 0 0.5" limited="true" range="-0.523598776 0.523598776"/>
+                  <geom class="visual" type="mesh" rgba="0.23 0.25 0.23 1" mesh="2_1_6_Foot_Left_Leg"/>
+                  <geom class="collision" name="left_foot" type="box" size="0.14 0.05 0.02" pos="0.03 0.005 -0.05"/>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="2_2_1_Hip_Roll_Right_Leg" pos="-0.04791 -0.14153 -0.00520" quat="0.992824 0 0 -0.119582">
+        <inertial pos="0.07451 0.00119 -0.00059" mass="3.265" fullinertia="0.00507 0.00645 0.00767 0.00003 0.00008 0.00007"/>
+        <joint name="Joint_2_2_1_Hip_Roll_Right_Leg" class="TBM2G_11526_SHF_32" pos="0 0 0" axis="1 0 0" range="-1.5708 0.349066"/>
+        <geom class="visual" type="mesh" rgba="0.23 0.25 0.23 1" mesh="2_2_1_Hip_Roll_Right_Leg"/>
+        <geom class="collision" type="cylinder" size="0.07 0.06" pos="0.0855 0.0 0.0" euler="0.0 0.0 0.0"/>
+        <body name="2_2_2_Hip_Yaw_Right_Leg" pos="0.0855 0.0 0.0" quat="0.992824 0 0 0.119582">
+          <site name="right_hip_mimic" class="mimic"/>
+          <inertial pos="-0.02492 0.03014 -0.13229" mass="6.765" fullinertia="0.01696 0.01964 0.01581 0.00002 -0.00051 0.00073"/>
+          <joint name="Joint_2_2_2_Hip_Yaw_Right_Leg" class="TBM2G_09408_SHF_25" pos="0 0 0" axis="0 0 1" range="-1.5708 1.5708"/>
+          <geom class="visual" type="mesh" rgba="0.23 0.25 0.23 1" mesh="2_2_2_Hip_Yaw_Right_Leg"/>
+          <geom class="collision" type="cylinder" size="0.085 0.07" pos="-0.025 0.0245 -0.13638" euler="1.5708 0.0 0.0"/>
+          <body name="2_2_3_Thigh_Right_Leg" pos="-0.025 0.0 -0.13638">
+            <inertial pos="-0.00065 0.03383 -0.26688" mass="7.305" fullinertia="0.05245 0.05451 0.01786 0.00017 0.00076 -0.00751"/>
+            <joint name="Joint_2_2_3_Hip_Pitch_Right_Leg" class="TBM2G_11526_SHF_32" pos="0 0 0" axis="0 1 0" range="-2.0944 0.5236"/>
+            <geom class="visual" type="mesh" rgba="0.23 0.25 0.23 1" mesh="2_2_3_Thigh_Right_Leg"/>
+            <geom class="collision" type="cylinder" size="0.085 0.075" pos="0.0 0.035 -0.29" euler="1.5708 0.0 0.0"/>
+            <geom class="collision" type="box" size="0.09 0.065 0.12" pos="0.0 0.03 -0.1"/>
+            <body name="2_2_4_Shin_Right_Leg" pos="0 0 -0.29">
+              <site name="right_knee_mimic" class="mimic"/>
+              <inertial pos="0.00937 0.01272 -0.21127" mass="5.128" fullinertia="0.06522 0.06601 0.00746 -0.00022 0.00167 0.00717"/>
+              <joint name="Joint_2_2_4_Knee_Right_Leg" class="TBM2G_11526_SHF_32" pos="0 0 0" axis="0 1 0" range="0 2.44346"/>
+              <geom class="visual" type="mesh" rgba="0.23 0.25 0.23 1" mesh="2_2_4_Shin_Right_Leg"/>
+              <!-- <geom class="collision" type="mesh" mesh="2_2_4_Shin_Right_Leg"/>  -->
+              <geom class="collision" type="box" size="0.065 0.067 0.17" pos="0.005 0.02 -0.26"/>
+              <body name="2_2_5_Shaft_Foot_Right_Leg" pos="0.02 0.02 -0.41">
+                <inertial pos="-0.01629 0.00000 -0.00941" mass="0.133" fullinertia="0.00004 0.00012 0.00008 0 -0.00004 0"/>
+                <joint name="Joint_2_2_5_Ankle_Pitch_Right_Leg" class="TBM2G_06013_SHF_20" pos="0 0 0" axis="0 1 0" limited="true" range="-0.261799388 0.698131701"/>
+                <geom class="visual" type="mesh" rgba="0.23 0.25 0.23 1" mesh="2_2_5_Shaft_Foot_Right_Leg"/>
+                <body name="2_2_6_Foot_Right_Leg" pos="0 0 0">
+                  <site name="right_foot_mimic" class="mimic" pos="0.03 -0.005 -0.05"/>
+                  <inertial pos="-0.01132 -0.00174 -0.04348" mass="0.611" fullinertia="0.00040 0.00355 0.00380 0.00007 0.00028 -0.00001"/>
+                  <joint name="Joint_2_2_6_Ankle_Roll_Right_Leg" class="TBM2G_06013_SHF_20" pos="0 0 0" axis="0.8660254038 0 0.5" limited="true" range="-0.523598776 0.523598776"/>
+                  <geom class="visual" type="mesh" rgba="0.23 0.25 0.23 1" mesh="2_2_6_Foot_Right_Leg"/>
+                  <geom class="collision" name="right_foot" type="box" size="0.14 0.05 0.02" pos="0.03 -0.005 -0.05"/>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="3_1_Waist_parallel" pos="0 0 0">
+        <site name = "waist_yaw_link_site" pos="0 0 0.0848" euler="0.0 3.14159 0.0" size="0.01"/>
+        <inertial pos="0.00861 -0.00002 0.13089" mass="6.940" fullinertia="0.06132 0.01452 0.05953 0 -0.00052 0"/>
+        <joint name="Joint_3_1_Waist_Yaw" class="TBM2G_09408_SHF_25" pos="0 0 0" axis="0 0 1" range="-1.5708 1.5708"/>
+        <geom class="visual" type="mesh" rgba="0.23 0.25 0.23 1" mesh="3_1_Waist_parallel"/>
+        <geom class="collision" type="mesh" mesh="3_1_Waist_parallel"/>
+        <!-- <geom class="collision" type="cylinder" size="0.07 0.15" pos="0.01 0.0 0.1373" euler="1.5708 0.0 0.0"/> -->
+        <body name="3_2_Link_cross_Torso_Body" pos="0.01 0 0.1373">
+          <inertial pos="-0.00615 0.00000 0.03645" mass="0.486" fullinertia="0.00067 0.00132 0.00083 0 0.00007 0"/>
+          <joint name="Joint_3_2_Waist_Pitch" class="TBM2G_09408_SHF_25" pos="0 0 0" axis="0 1 0" range="-0.436332 0.785398"/>
+          <geom class="visual" type="mesh" rgba="0.23 0.25 0.23 1" mesh="3_2_Link_cross_Torso_Body"/>
+          <body name="3_3_Torso" pos="-0.01 0 0.07">
+            <site name="upper_body_mimic" class="mimic" pos="0.0 0.0 0.3"/>
+            <site name="head_mimic" class="mimic" pos="0.0 0.0 0.6"/>
+            <inertial pos="-0.07803 0.00140 0.38060" mass="22.745" fullinertia="0.56760 0.50790 0.23140 0.00022 0.01508 -0.00218"/>
+            <joint name="Joint_3_3_Waist_Roll" class="TBM2G_09408_SHF_25" pos="0 0 0" axis="1 0 0" range="-0.523599 0.523599"/>
+            <geom class="visual" type="mesh" rgba="0.2 0.2 0.2 1" mesh="3_3_Torso"/>
+            <!-- <geom class="collision" type="mesh" mesh="3_3_Torso"/> -->
+            <geom class="collision" type="box" size="0.15 0.14 0.35" pos="-0.02 0.0 0.35"/>
+            <body name="1_1_1_Shoulder_Pitch_Left_Arm" pos="-0.02 0.23 0.31">
+              <inertial pos="0.00720 0.18178 0.00155" mass="2.089" fullinertia="0.00382 0.00234 0.00355 -0.00018 0.00001 0.00004"/>
+              <joint name="Joint_1_1_1_Shoulder_Pitch_Left_Arm" class="TBM2G_07613_SHF_25" pos="0 0 0" axis="0 1 0" range="-3.14159 1.0472"/>
+              <geom class="visual" type="mesh" rgba="0.2 0.2 0.2 1" mesh="1_1_1_Shoulder_Pitch_Left_Arm"/>
+              <geom class="collision" type="mesh" mesh="1_1_1_Shoulder_Pitch_Left_Arm"/>
+              <!-- <geom class="collision" type="cylinder" size="0.09 0.05" pos="0.0 -0.03 0.0" euler="1.5708 0.0 0.0"/>
+              <geom class="collision" type="cylinder" size="0.08 0.07" pos="0 0 0" euler="0.0 1.5708 0.0"/> -->
+              <body name="1_1_2_Shoulder_Roll_Left_Arm" pos="0 0 0">
+                <site name="left_shoulder_mimic" class="mimic"/>
+                <inertial pos="0.00153 0.00207 -0.04745" mass="0.435" fullinertia="0.00120 0.00163 0.00095 0 -0.00005 -0.00001"/>
+                <joint name="Joint_1_1_2_Shoulder_Roll_Left_Arm" class="TBM2G_07613_SHF_20" pos="0 0 0" axis="1 0 0" range="-0.261799 1.5708"/>
+                <geom class="visual" type="mesh" rgba="0.2 0.2 0.2 1" mesh="1_1_2_Shoulder_Roll_Left_Arm"/>
+                <geom class="collision" type="mesh" mesh="1_1_2_Shoulder_Roll_Left_Arm"/>
+                <!-- <geom class="collision" type="cylinder" size="0.06 0.07" pos="0 0 -0.12" euler="0.0 0.0 0.0"/> -->
+                <body name="1_1_3_Shoulder_Yaw_Left_Arm" pos="-0.001 0 -0.0805">
+                  <inertial pos="0.00260 0.00558 -0.09321" mass="2.976" fullinertia="0.01220 0.01203 0.00239 -0.00004 0.00039 0.00085"/>
+                  <joint name="Joint_1_1_3_Shoulder_Yaw_Left_Arm" class="TBM2G_06013_SHF_17" pos="0 0 0" axis="0 0 1" range="-1.5708 1.5708"/>
+                  <geom class="visual" type="mesh" rgba="0.23 0.25 0.23 1" mesh="1_1_3_Shoulder_Yaw_Left_Arm"/>
+                  <geom class="collision" type="cylinder" size="0.05 0.056" pos="0.0 0.01 -0.14603" euler="1.5708 0.0 0.0"/>
+                  <body name="1_1_4_Elbow_Left_Arm" pos="0.004 0 -0.14603">
+                    <site name="left_elbow_mimic" class="mimic"/>
+                    <inertial pos="0.00046 0.00970 -0.03842" mass="0.224" fullinertia="0.00043 0.00025 0.00032 0 0 -0.00008"/>
+                    <joint name="Joint_1_1_4_Elbow_Left_Arm" class="TBM2G_06013_SHF_17" pos="0 0 0" axis="0 1 0" range="-2.35619 0"/>
+                    <geom class="visual" type="mesh" rgba="0.23 0.25 0.23 1" mesh="1_1_4_Elbow_Left_Arm"/>
+                    <geom class="collision" type="cylinder" size="0.045 0.058" pos="0 0 -0.102" euler="0.0 0.0 0.0"/>
+                    <body name="1_1_5_Wrist_Yaw_Left_Arm" pos="0 0.00125 -0.071">
+                      <inertial pos="0.00110 -0.00127 -0.06309" mass="1.555" fullinertia="0.00446 0.00433 0.00094 0 0.00010 -0.00013"/>
+                      <joint name="Joint_1_1_5_Wrist_Yaw_Left_Arm" class="TBM2G_05008_SHF_14" pos="0 0 0" axis="0 0 1" range="-1.5708 1.5708"/>
+                      <geom class="visual" type="mesh" rgba="0.23 0.25 0.23 1" mesh="1_1_5_Wrist_Yaw_Left_Arm"/>
+                      <geom class="collision" type="cylinder" size="0.037 0.05" pos="0.002 0.0 -0.125" euler="1.5708 0.0 0.0"/>
+                      <body name="1_1_6_Wrist_Pitch_Left_Arm" pos="-0.0029 0 -0.1966">
+                        <inertial pos="-0.00424 -0.00001 0.00050" mass="0.456" fullinertia="0.00017 0.00022 0.00023 0 -0.00001 0"/>
+                        <joint name="Joint_1_1_6_Wrist_Pitch_Left_Arm" class="TBM2G_05008_CSF_11" pos="0 0 0" axis="0 1 0" range="-0.523599 0.523599"/>
+                        <geom class="visual" type="mesh" rgba="0.23 0.25 0.23 1" mesh="1_1_6_Wrist_Pitch_Left_Arm"/>
+                        <geom class="collision" type="cylinder" size="0.042 0.05" pos="0 0 0" euler="0.0 1.5708 0.0"/>
+                        <body name="1_1_7_Wrist_Roll_Left_Arm" pos="0 -0.00065 0">
+                          <site name="left_hand_mimic" class="mimic" pos="0.0 0.0 -0.10"/>
+                          <inertial pos="-0.00074 0 -0.02505" mass="0.215" fullinertia="0.00011 0.00025 0.00019 0 0 0"/>
+                          <joint name="Joint_1_1_7_Wrist_Roll_Left_Arm" class="TBM2G_05008_CSF_11" pos="0 0 0" axis="1 0 0" range="-1.5708 1.0472"/>
+                          <geom class="visual" type="mesh" rgba="0.23 0.25 0.23 1" mesh="1_1_7_Wrist_Roll_Left_Arm"/>
+                          <geom class="visual" type="box" rgba="0.2 0.2 0.2 1" size="0.05 0.01 0.075" pos="0 0 -0.12"/>
+                          <geom class="collision" type="box" size="0.05 0.01 0.075" pos="0 0 -0.12"/>
+                        </body>
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+            <body name="1_2_1_Shoulder_Pitch_Right_Arm" pos="-0.02 -0.23 0.31">
+              <inertial pos="0.00720 -0.18179 0.00154" mass="2.089" fullinertia="0.00382 0.00234 0.00355 0.00017 0.00001 -0.00004"/>
+              <joint name="Joint_1_2_1_Shoulder_Pitch_Right_Arm" class="TBM2G_07613_SHF_25" pos="0 0 0" axis="0 1 0" range="-3.14159 1.0472"/>
+              <geom class="visual" type="mesh" rgba="0.2 0.2 0.2 1" mesh="1_2_1_Shoulder_Pitch_Right_Arm"/>
+              <geom class="collision" type="mesh" mesh="1_2_1_Shoulder_Pitch_Right_Arm"/>
+              <!-- <geom class="collision" type="cylinder" size="0.09 0.05" pos="0.0 0.03 0.0" euler="1.5708 0.0 0.0"/>
+              <geom class="collision" type="cylinder" size="0.08 0.07" pos="0 0 0" euler="0.0 1.5708 0.0"/> -->
+              <body name="1_2_2_Shoulder_Roll_Right_Arm" pos="0 0 0">
+                <site name="right_shoulder_mimic" class="mimic"/>
+                <inertial pos="0.00153 -0.00207 -0.04745" mass="0.435" fullinertia="0.00120 0.00163 0.00095 0 -0.00005 0.00001"/>
+                <joint name="Joint_1_2_2_Shoulder_Roll_Right_Arm" class="TBM2G_07613_SHF_20" pos="0 0 0" axis="1 0 0" range="-1.5708 0.261799"/>
+                <geom class="visual" type="mesh" rgba="0.2 0.2 0.2 1" mesh="1_2_2_Shoulder_Roll_Right_Arm"/>
+                <geom class="collision" type="mesh" mesh="1_2_2_Shoulder_Roll_Right_Arm"/>
+                <!-- <geom class="collision" type="cylinder" size="0.06 0.07" pos="0 0 -0.12" euler="0.0 0.0 0.0"/> -->
+                <body name="1_2_3_Shoulder_Yaw_Right_Arm" pos="-0.001 0 -0.0805">
+                  <inertial pos="0.00191 -0.00693 -0.09564" mass="3.165" fullinertia="0.01289 0.01265 0.00265 0.00001 0.00031 -0.00108"/>
+                  <joint name="Joint_1_2_3_Shoulder_Yaw_Right_Arm" class="TBM2G_06013_SHF_17" pos="0 0 0" axis="0 0 1" range="-1.5708 1.5708"/>
+                  <geom class="visual" type="mesh" rgba="0.23 0.25 0.23 1" mesh="1_2_3_Shoulder_Yaw_Right_Arm"/>
+                  <geom class="collision" type="cylinder" size="0.05 0.056" pos="0 -0.01 -0.14603" euler="1.5708 0.0 0.0"/>
+                  <body name="1_2_4_Elbow_Right_Arm" pos="0.004 0 -0.14603">
+                    <site name="right_elbow_mimic" class="mimic"/>
+                    <inertial pos="-0.00046 -0.00970 -0.03842" mass="0.224" fullinertia="0.00043 0.00025 0.00032 0 0 0.00008"/>
+                    <joint name="Joint_1_2_4_Elbow_Right_Arm" class="TBM2G_06013_SHF_17" pos="0 0 0" axis="0 1 0" range="-2.35619 0"/>
+                    <geom class="visual" type="mesh" rgba="0.23 0.25 0.23 1" mesh="1_2_4_Elbow_Right_Arm"/>
+                    <geom class="collision" type="cylinder" size="0.045 0.058" pos="0 0 -0.102" euler="0.0 0.0 0.0"/>
+                    <body name="1_2_5_Wrist_Yaw_Right_Arm" pos="0 -0.00125 -0.071">
+                      <inertial pos="-0.00146 0.00129 -0.06344" mass="1.531" fullinertia="0.00444 0.00432 0.00094 0 -0.00008 0.00013"/>
+                      <joint name="Joint_1_2_5_Wrist_Yaw_Right_Arm" class="TBM2G_05008_SHF_14" pos="0 0 0" axis="0 0 1" range="-1.5708 1.5708"/>
+                      <geom class="visual" type="mesh" rgba="0.23 0.25 0.23 1" mesh="1_2_5_Wrist_Yaw_Right_Arm"/>
+                      <geom class="collision" type="cylinder" size="0.037 0.05" pos="0.002 0.0 -0.125" euler="1.5708 0.0 0.0"/>
+                      <body name="1_2_6_Wrist_Pitch_Right_Arm" pos="0.0029 0 -0.1966">
+                        <inertial pos="-0.00426 0.00002 0.00050" mass="0.457" fullinertia="0.00017 0.00022 0.00023 0 -0.00001 0"/>
+                        <joint name="Joint_1_2_6_Wrist_Pitch_Right_Arm" class="TBM2G_05008_CSF_11" pos="0 0 0" axis="0 1 0" range="-0.523599 0.523599"/>
+                        <geom class="visual" type="mesh" rgba="0.23 0.25 0.23 1" mesh="1_2_6_Wrist_Pitch_Right_Arm"/>
+                        <geom class="collision" type="cylinder" size="0.042 0.05" pos="0 0 0" euler="0.0 1.5708 0.0"/>
+                        <body name="1_2_7_Wrist_Roll_Right_Arm" pos="0 0.00065 0">
+                          <site name="right_hand_mimic" class="mimic" pos="0.0 0.0 -0.10"/>
+                          <inertial pos="-0.00074 0 -0.02505" mass="0.215" fullinertia="0.00011 0.00025 0.00019 0 0 0"/>
+                          <joint name="Joint_1_2_7_Wrist_Roll_Right_Arm" class="TBM2G_05008_CSF_11" pos="0 0 0" axis="1 0 0" range="-1.0472 1.5708"/>
+                          <geom class="visual" type="mesh" rgba="0.23 0.25 0.23 1" mesh="1_2_7_Wrist_Roll_Right_Arm"/>
+                          <geom class="visual" type="box" rgba="0.2 0.2 0.2 1" size="0.05 0.01 0.075" pos="0 0 -0.12"/>
+                          <geom class="collision" type="box" size="0.05 0.01 0.075" pos="0 0 -0.12"/>
+                        </body>
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <motor name="Joint_2_1_1_Hip_Roll_Left_Leg" joint="Joint_2_1_1_Hip_Roll_Left_Leg" class="TBM2G_11526_SHF_32"/>
+    <motor name="Joint_2_1_2_Hip_Yaw_Left_Leg" joint="Joint_2_1_2_Hip_Yaw_Left_Leg" class="TBM2G_09408_SHF_25"/>
+    <motor name="Joint_2_1_3_Hip_Pitch_Left_Leg" joint="Joint_2_1_3_Hip_Pitch_Left_Leg" class="TBM2G_11526_SHF_32"/>
+    <motor name="Joint_2_1_4_Knee_Left_Leg" joint="Joint_2_1_4_Knee_Left_Leg" class="TBM2G_11526_SHF_32"/>
+    <motor name="Joint_2_1_5_Ankle_Pitch_Left_Leg" joint="Joint_2_1_5_Ankle_Pitch_Left_Leg" class="TBM2G_11526_SHF_32"/>
+    <motor name="Joint_2_1_6_Ankle_Roll_Left_Leg" joint="Joint_2_1_6_Ankle_Roll_Left_Leg" class="TBM2G_11526_SHF_32"/>
+
+    <motor name="Joint_2_2_1_Hip_Roll_Right_Leg" joint="Joint_2_2_1_Hip_Roll_Right_Leg" class="TBM2G_11526_SHF_32"/>
+    <motor name="Joint_2_2_2_Hip_Yaw_Right_Leg" joint="Joint_2_2_2_Hip_Yaw_Right_Leg" class="TBM2G_09408_SHF_25"/>
+    <motor name="Joint_2_2_3_Hip_Pitch_Right_Leg" joint="Joint_2_2_3_Hip_Pitch_Right_Leg" class="TBM2G_11526_SHF_32"/>
+    <motor name="Joint_2_2_4_Knee_Right_Leg" joint="Joint_2_2_4_Knee_Right_Leg" class="TBM2G_11526_SHF_32"/>
+    <motor name="Joint_2_2_5_Ankle_Pitch_Right_Leg" joint="Joint_2_2_5_Ankle_Pitch_Right_Leg" class="TBM2G_11526_SHF_32"/>
+    <motor name="Joint_2_2_6_Ankle_Roll_Right_Leg" joint="Joint_2_2_6_Ankle_Roll_Right_Leg" class="TBM2G_11526_SHF_32"/>
+
+    <motor name="Joint_3_1_Waist_Yaw" joint="Joint_3_1_Waist_Yaw" class="TBM2G_09408_SHF_25"/>
+    <motor name="Joint_3_2_Waist_Pitch" joint="Joint_3_2_Waist_Pitch" class="TBM2G_09408_SHF_25"/>
+    <motor name="Joint_3_3_Waist_Roll" joint="Joint_3_3_Waist_Roll" class="TBM2G_09408_SHF_25"/>
+
+    <motor name="Joint_1_1_1_Shoulder_Pitch_Left_Arm" joint="Joint_1_1_1_Shoulder_Pitch_Left_Arm" class="TBM2G_07613_SHF_25"/>
+    <motor name="Joint_1_1_2_Shoulder_Roll_Left_Arm" joint="Joint_1_1_2_Shoulder_Roll_Left_Arm" class="TBM2G_07613_SHF_20"/>
+    <motor name="Joint_1_1_3_Shoulder_Yaw_Left_Arm" joint="Joint_1_1_3_Shoulder_Yaw_Left_Arm" class="TBM2G_06013_SHF_17"/>
+    <motor name="Joint_1_1_4_Elbow_Left_Arm" joint="Joint_1_1_4_Elbow_Left_Arm" class="TBM2G_06013_SHF_17"/>
+    <motor name="Joint_1_1_5_Wrist_Yaw_Left_Arm" joint="Joint_1_1_5_Wrist_Yaw_Left_Arm" class="TBM2G_05008_SHF_14"/> 
+    <motor name="Joint_1_1_6_Wrist_Pitch_Left_Arm" joint="Joint_1_1_6_Wrist_Pitch_Left_Arm" class="TBM2G_05008_CSF_11"/>
+    <motor name="Joint_1_1_7_Wrist_Roll_Left_Arm" joint="Joint_1_1_7_Wrist_Roll_Left_Arm" class="TBM2G_05008_CSF_11"/> 
+
+    <motor name="Joint_1_2_1_Shoulder_Pitch_Right_Arm" joint="Joint_1_2_1_Shoulder_Pitch_Right_Arm" class="TBM2G_07613_SHF_25"/>
+    <motor name="Joint_1_2_2_Shoulder_Roll_Right_Arm" joint="Joint_1_2_2_Shoulder_Roll_Right_Arm" class="TBM2G_07613_SHF_20"/>
+    <motor name="Joint_1_2_3_Shoulder_Yaw_Right_Arm" joint="Joint_1_2_3_Shoulder_Yaw_Right_Arm" class="TBM2G_06013_SHF_17"/>
+    <motor name="Joint_1_2_4_Elbow_Right_Arm" joint="Joint_1_2_4_Elbow_Right_Arm" class="TBM2G_06013_SHF_17"/>
+    <motor name="Joint_1_2_5_Wrist_Yaw_Right_Arm" joint="Joint_1_2_5_Wrist_Yaw_Right_Arm" class="TBM2G_05008_SHF_14"/>
+    <motor name="Joint_1_2_6_Wrist_Pitch_Right_Arm" joint="Joint_1_2_6_Wrist_Pitch_Right_Arm" class="TBM2G_05008_CSF_11"/>
+    <motor name="Joint_1_2_7_Wrist_Roll_Right_Arm" joint="Joint_1_2_7_Wrist_Roll_Right_Arm" class="TBM2G_05008_CSF_11"/>
+  </actuator>
+
+  <contact>
+    <exclude body1="3_1_Waist_parallel" body2="3_3_Torso"/>
+    <exclude body1="2_2_6_Foot_Right_Leg" body2="2_2_4_Shin_Right_Leg"/>
+    <exclude body1="2_1_6_Foot_Left_Leg" body2="2_1_4_Shin_Left_Leg"/>
+    <exclude body1="1_1_7_Wrist_Roll_Left_Arm" body2="1_1_5_Wrist_Yaw_Left_Arm"/>
+    <exclude body1="1_2_7_Wrist_Roll_Right_Arm" body2="1_2_5_Wrist_Yaw_Right_Arm"/>
+    <exclude body1="base_link" body2="2_1_2_Hip_Yaw_Left_Leg"/>
+    <exclude body1="base_link" body2="2_2_2_Hip_Yaw_Right_Leg"/>
+  </contact>
+
+  <sensor>
+    <gyro site="waist_yaw_link_site" name="imu-pelvis-angular-velocity" cutoff="34.9" noise="0.0005"/>
+    <accelerometer site="waist_yaw_link_site" name="imu-pelvis-linear-acceleration" cutoff="157" noise="0.01"/>
+    <framequat name="imu-pelvis-quat" objtype="site" objname="waist_yaw_link_site"/>
+  </sensor>
+</mujoco>

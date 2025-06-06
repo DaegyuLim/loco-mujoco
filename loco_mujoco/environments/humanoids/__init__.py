@@ -18,6 +18,8 @@ from .toddlerbot import ToddlerBot
 from .toddlerbot_mjx import MjxToddlerBot
 from .fourier_gr1t2 import FourierGR1T2
 from .fourier_gr1t2_mjx import MjxFourierGR1T2
+from .robrosIgrisA import RobrosIgrisA
+from .robrosIgrisA_mjx import MjxRobrosIgrisA
 from .skeletons import (SkeletonTorque, MjxSkeletonTorque, HumanoidTorque, SkeletonMuscle, MjxSkeletonMuscle,
                         HumanoidMuscle)
 
@@ -47,6 +49,8 @@ SkeletonMuscle.register()
 MjxSkeletonMuscle.register()
 MyoSkeleton.register()
 MjxMyoSkeleton.register()
+RobrosIgrisA.register()
+MjxRobrosIgrisA.register()
 
 # compatability with old names
 HumanoidTorque.register()
